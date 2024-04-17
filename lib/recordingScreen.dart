@@ -59,9 +59,8 @@ class _recordingScreenState extends State<recordingScreen> {
           IconButton(
             onPressed: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => MapPage())
+                  MaterialPageRoute(builder: (context) => MapPage(data: _data))
               );
-              // Add your action here
             },
             icon: Icon(Icons.map_sharp), // Replace with the desired icon
           ),
@@ -102,12 +101,14 @@ class _recordingScreenState extends State<recordingScreen> {
                   DataColumn(label: Text('LONGITUDE')),
                   DataColumn(label: Text('TIMESTAMP')),
                 ],
-                rows: _data.map((entry) {
+                rows: _data.asMap().entries.map((entry) {
+                  int serialNumber = entry.key + 1; // Start serial number from 1
+                  Map<String, dynamic> data = entry.value;
                   return DataRow(cells: [
-                    DataCell(Text(entry['rec_no'].toString())),
-                    DataCell(Text(entry['latitude'].toString())),
-                    DataCell(Text(entry['longitude'].toString())),
-                    DataCell(Text(entry['timestamp'].toString())),
+                    DataCell(Text(serialNumber.toString())),
+                    DataCell(Text(data['latitude'].toString())),
+                    DataCell(Text(data['longitude'].toString())),
+                    DataCell(Text(data['timestamp'].toString())),
                   ]);
                 }).toList(),
               ),

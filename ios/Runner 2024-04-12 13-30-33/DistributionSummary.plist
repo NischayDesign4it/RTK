@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>rtk.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
+			<key>buildNumber</key>
+			<string>1</string>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>34E366621BB1E90347FFBC5C789C7728E4633988</string>
+				<key>dateExpires</key>
+				<string>12/07/24</string>
+				<key>type</key>
+				<string>Apple Development</string>
+			</dict>
+			<key>embeddedBinaries</key>
+			<array>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>buildNumber</key>
+					<string>1.0</string>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>34E366621BB1E90347FFBC5C789C7728E4633988</string>
+						<key>dateExpires</key>
+						<string>12/07/24</string>
+						<key>type</key>
+						<string>Apple Development</string>
+					</dict>
+					<key>name</key>
+					<string>App.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>4PM46PZ822</string>
+						<key>name</key>
+						<string>DESIGN 4 IT LLC</string>
+					</dict>
+					<key>versionNumber</key>
+					<string>1.0</string>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>buildNumber</key>
+					<string>1.0</string>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>34E366621BB1E90347FFBC5C789C7728E4633988</string>
+						<key>dateExpires</key>
+						<string>12/07/24</string>
+						<key>type</key>
+						<string>Apple Development</string>
+					</dict>
+					<key>name</key>
+					<string>Flutter.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>4PM46PZ822</string>
+						<key>name</key>
+						<string>DESIGN 4 IT LLC</string>
+					</dict>
+					<key>versionNumber</key>
+					<string>1.0</string>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>buildNumber</key>
+					<string>1</string>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>34E366621BB1E90347FFBC5C789C7728E4633988</string>
+						<key>dateExpires</key>
+						<string>12/07/24</string>
+						<key>type</key>
+						<string>Apple Development</string>
+					</dict>
+					<key>name</key>
+					<string>flutter_native_splash.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>4PM46PZ822</string>
+						<key>name</key>
+						<string>DESIGN 4 IT LLC</string>
+					</dict>
+					<key>versionNumber</key>
+					<string>0.0.1</string>
+				</dict>
+			</array>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>4PM46PZ822.com.example.rtk</string>
+				<key>aps-environment</key>
+				<string>development</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>4PM46PZ822</string>
+				<key>get-task-allow</key>
+				<true/>
+			</dict>
+			<key>name</key>
+			<string>Runner.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>7997bb2a-ae06-4b92-8bb2-b2deb93c7367</string>
+				<key>dateExpires</key>
+				<string>08/04/25</string>
+				<key>name</key>
+				<string>iOS Team Provisioning Profile: com.example.rtk</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>4PM46PZ822</string>
+				<key>name</key>
+				<string>DESIGN 4 IT LLC</string>
+			</dict>
+			<key>versionNumber</key>
+			<string>1.0.0</string>
+		</dict>
+	</array>
+</dict>
+</plist>

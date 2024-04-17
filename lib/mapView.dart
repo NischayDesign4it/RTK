@@ -4,7 +4,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 
 class MapPage extends StatefulWidget {
-  const MapPage({super.key});
+  final List<Map<String, dynamic>> data;
+   MapPage({super.key, required this.data});
 
   @override
   State<MapPage> createState() => _MapPageState();
@@ -12,78 +13,80 @@ class MapPage extends StatefulWidget {
 
 class _MapPageState extends State<MapPage> {
   Completer<GoogleMapController> _controller = Completer();
-  static final CameraPosition _kGooglePlex = const CameraPosition(target: LatLng(37.000, -122.00),
-    zoom: 14
-  );
-
   final Set<Marker> _marker = {};
   final Set<Polyline> _polyline = {};
 
-
-  List<LatLng> latlng = [
-    LatLng(37.0025612, -121.9900840),
-    LatLng(37.0025789, -121.9981904),
-    LatLng(37.00994568, -121.9900999),
-    LatLng(37.0025612, -121.9900840),
-  ];
-  
-  @override 
-  void initState(){
+  @override
+  void initState() {
     super.initState();
-    for(int i=0; i<latlng.length; i++){
-      _marker.add(Marker(markerId: MarkerId(i.toString()),
-        position: latlng[i],
-        infoWindow: InfoWindow(
-          title: 'Player 1 Location',
-          snippet: '5 star rating'
-        ),
-        icon: BitmapDescriptor.defaultMarker,
-      )
-      );
-      setState(() {
+    // Fetching data passed from the previous screen
+    List<Map<String, dynamic>> data = widget.data;
 
-      });
-      _polyline.add(
-        Polyline(polylineId: PolylineId('1'),
-          points: latlng,
-          color: Colors.black,
-          width: 12,
+    // Extracting latitude and longitude values from the data
+    List<LatLng> latlng = data.map((entry) {
+      double lat = entry['latitude'];
+      double lng = entry['longitude'];
+      return LatLng(lat, lng);
+    }).toList();
+
+    // Adding markers
+    for(int i = 0; i < latlng.length; i++) {
+      _marker.add(
+        Marker(
+          markerId: MarkerId(i.toString()),
+          position: latlng[i],
+          infoWindow: InfoWindow(
+              title: 'Player 1 Location',
+              snippet: '5 star rating'
+          ),
+          icon: BitmapDescriptor.defaultMarker,
         ),
       );
     }
-  }
 
+    // Adding polyline
+    _polyline.add(
+      Polyline(
+        polylineId: PolylineId('1'),
+        points: latlng,
+        color: Colors.black,
+        width: 12,
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            onPressed: (){
-              Navigator.pop(context);
-            },
-            icon:Icon(Icons.arrow_back_ios),
-            //replace with our own icon data.
-          ),
-          title: Stack(
-            children: <Widget>[
-              Text(
-                'Map View',
-                style: TextStyle(fontSize: 25.0),
-              ),
-            ],
-          ),
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back_ios),
+          //replace with our own icon data.
         ),
+        title: Stack(
+          children: <Widget>[
+            Text(
+              'Map View',
+              style: TextStyle(fontSize: 25.0),
+            ),
+          ],
+        ),
+      ),
       body: GoogleMap(
         polylines: _polyline,
         markers: _marker,
-        initialCameraPosition:  _kGooglePlex,
+        initialCameraPosition: CameraPosition(
+          target: _marker.isNotEmpty ? _marker.first.position : LatLng(0, 0), // Set initial position to the first marker
+          zoom: 14,
+        ),
         mapType: MapType.normal,
-        onMapCreated: (GoogleMapController controller){
-        _controller.complete(controller);
+        onMapCreated: (GoogleMapController controller) {
+          _controller.complete(controller);
         },
-      )
+      ),
     );
   }
 }
-

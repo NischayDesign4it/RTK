@@ -15,6 +15,9 @@ class _historyScreenState extends State<historyScreen> {
   void initState() {
     super.initState();
     _data = widget.data;
+
+    // print('Latitude data type: ${_data.first['latitude'].runtimeType}');
+    // print('Longitude data type: ${_data.first['longitude'].runtimeType}');
   }
 
   @override
@@ -53,7 +56,7 @@ class _historyScreenState extends State<historyScreen> {
               child: Column(
                 children: [
                   Text("Recording 1",
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Color(0xFF28283D)),),
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),),
                   SizedBox(height: screenHeight * 0.04),
                   Container(
                     child: SingleChildScrollView(
@@ -65,12 +68,14 @@ class _historyScreenState extends State<historyScreen> {
                           DataColumn(label: Text('LONGITUDE')),
                           DataColumn(label: Text('TIMESTAMP')),
                         ],
-                        rows: _data.take(2).map((entry) {
+                        rows: _data.asMap().entries.map((entry) {
+                          int serialNumber = entry.key + 1; // Start serial number from 1
+                          Map<String, dynamic> data = entry.value;
                           return DataRow(cells: [
-                            DataCell(Text(entry['rec_no'].toString())),
-                            DataCell(Text(entry['latitude'].toString())),
-                            DataCell(Text(entry['longitude'].toString())),
-                            DataCell(Text(entry['timestamp'].toString())),
+                            DataCell(Text(serialNumber.toString())),
+                            DataCell(Text(data['latitude'].toString())),
+                            DataCell(Text(data['longitude'].toString())),
+                            DataCell(Text(data['timestamp'].toString())),
                           ]);
                         }).toList(),
                       ),
@@ -78,7 +83,7 @@ class _historyScreenState extends State<historyScreen> {
                   ),
                   SizedBox(height: screenHeight * 0.04),
                   Text("Recording 2",
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Color(0xFF28283D)),),
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),),
                   SizedBox(height: screenHeight * 0.04),
                   Container(
                     child: SingleChildScrollView(
@@ -90,12 +95,14 @@ class _historyScreenState extends State<historyScreen> {
                           DataColumn(label: Text('LONGITUDE')),
                           DataColumn(label: Text('TIMESTAMP')),
                         ],
-                        rows: _data.take(2).map((entry) {
+                        rows: _data.asMap().entries.map((entry) {
+                          int serialNumber = entry.key + 1; // Start serial number from 1
+                          Map<String, dynamic> data = entry.value;
                           return DataRow(cells: [
-                            DataCell(Text(entry['rec_no'].toString())),
-                            DataCell(Text(entry['latitude'].toString())),
-                            DataCell(Text(entry['longitude'].toString())),
-                            DataCell(Text(entry['timestamp'].toString())),
+                            DataCell(Text(serialNumber.toString())),
+                            DataCell(Text(data['latitude'].toString())),
+                            DataCell(Text(data['longitude'].toString())),
+                            DataCell(Text(data['timestamp'].toString())),
                           ]);
                         }).toList(),
                       ),
