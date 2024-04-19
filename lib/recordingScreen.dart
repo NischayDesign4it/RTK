@@ -24,7 +24,7 @@ class _recordingScreenState extends State<recordingScreen> {
   Future<void> fetchData() async {
     try {
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-      final response = await http.get(Uri.parse('http://54.146.55.20:8000/data_manage_api/'));
+      final response = await http.get(Uri.parse('http://35.171.6.254:8000/data_manage_api/'));
 
       if (response.statusCode == 200) {
         final List<dynamic> responseData = json.decode(response.body);
