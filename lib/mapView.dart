@@ -16,6 +16,7 @@ class _MapPageState extends State<MapPage> {
   final Set<Marker> _marker = {};
   final Set<Polyline> _polyline = {};
 
+
   @override
   void initState() {
     super.initState();
@@ -80,7 +81,7 @@ class _MapPageState extends State<MapPage> {
         markers: _marker,
         initialCameraPosition: CameraPosition(
           target: _marker.isNotEmpty ? _marker.first.position : LatLng(0, 0), // Set initial position to the first marker
-          zoom: 14,
+          zoom: 25,
         ),
         mapType: MapType.normal,
         onMapCreated: (GoogleMapController controller) {
